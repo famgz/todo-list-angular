@@ -9,5 +9,22 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'todo-list-angular';
 
-  tasks: Task[] = [];
+  tasks: Task[] = [
+    {
+      id: 1,
+      title: 'Tarefa1 ',
+      category: 'Esportes',
+      completed: true,
+      createdAt: new Date(),
+      dueHour: new Date(),
+    },
+    {
+      id: 2,
+      title: 'Tarefa2 ',
+      category: 'Esportes',
+      completed: false,
+      createdAt: new Date(),
+      dueHour: new Date(),
+    },
+  ];
 }

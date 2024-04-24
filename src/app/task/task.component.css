@@ -1,8 +1,69 @@
 .task {
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
+  gap: 1rem;
   background-color: var(--background-light);
   color: var(--text-dark);
   border: none;
   border-radius: 5px;
   text-align: center;
+  margin-bottom: 1rem;
+
+  i {
+    font-size: 2rem;
+  }
+
+  & .task-checked {
+    display: flex;
+    align-items: center;
+  }
+
+  & .task-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: start;
+    flex: 1 1;
+
+    & > div {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .separator {
+      font-size: 0.3rem;
+      padding-top: 6px;
+    }
+  }
+
+  & .task-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    & i {
+      font-size: 1rem;
+    }
+  }
+
+  & .task-btn-edit {
+    border: none;
+    color: var(--text);
+    background-color: var(--text-dark);
+  }
+  & .task-btn-delete {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+  }
 }

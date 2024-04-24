@@ -30,3 +30,9 @@ span {
   --info: #2196f3;
   --disabled: #616161;
 }
+
+button {
+  border: none;
+  background: none;
+  padding: none;
+}

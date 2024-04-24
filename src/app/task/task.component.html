@@ -1,1 +1,37 @@
-<div class="task">Ainda não há tarefas para este dia</div>
+<div class="task">
+  <ng-container *ngIf="!task">
+    Ainda não há tarefas para esse dia
+  </ng-container>
+  <ng-container *ngIf="task">
+    <button class="task-checked">
+      <i
+        [ngClass]="
+          task.completed ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'
+        "
+      ></i>
+    </button>
+    <div class="task-info">
+      <h2>{{ task.title }}</h2>
+      <div>
+        <span>{{ task.category }}</span>
+        <i class="fa-solid fa-circle separator"></i>
+        <span>
+          {{
+            task.dueHour.toLocaleString("pt-br", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+          }}
+        </span>
+      </div>
+    </div>
+    <div class="task-btns">
+      <button class="task-btn-edit">
+        <i class="fa-solid fa-pen"></i>
+      </button>
+      <button class="task-btn-delete">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  </ng-container>
+</div>
