@@ -17,10 +17,12 @@
   & .task-checked {
     display: flex;
     align-items: center;
+    color: var(--text-dark);
   }
 
   & .task-info {
     display: flex;
+    gap: 0.5rem;
     flex-direction: column;
     text-align: center;
     align-items: start;
@@ -36,6 +38,10 @@
     .separator {
       font-size: 0.3rem;
       padding-top: 6px;
+    }
+
+    .fa-clock {
+      font-size: 1rem;
     }
   }
 
@@ -54,16 +60,16 @@
     & i {
       font-size: 1rem;
     }
-  }
 
-  & .task-btn-edit {
-    border: none;
-    color: var(--text);
-    background-color: var(--text-dark);
-  }
-  & .task-btn-delete {
-    background-color: var(--background-light);
-    color: var(--text-dark);
-    border: 1px solid var(--text-dark);
+    & .task-btn-edit {
+      border: none;
+      color: var(--text);
+      background-color: var(--text-dark);
+    }
+    & .task-btn-delete {
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      border: 1px solid var(--text-dark);
+    }
   }
 }
