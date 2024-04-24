@@ -17,15 +17,15 @@ button {
   color: var(--text);
   font-size: 3rem;
   font-weight: bold;
-  border: 2px solid transparent;
   height: fit-content;
   width: fit-content;
   margin: auto 0;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   line-height: 1;
   transition: border 0.3s;
+  border-radius: 4px;
 
   &:hover {
-    border: 2px solid var(--primary);
+    box-shadow: inset 0px 0px 5px 5px var(--primary);
   }
 }
