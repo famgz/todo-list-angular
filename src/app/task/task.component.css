@@ -1,0 +1,8 @@
+.task {
+  padding: 1rem;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}

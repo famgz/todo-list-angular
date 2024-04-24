@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: min(500px, 100%);
+  height: min(1024px, 100vh);
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-image: url("/assets/images/background-tech.jpg");
+  background-position: center;
+  background-size: cover;
+}
