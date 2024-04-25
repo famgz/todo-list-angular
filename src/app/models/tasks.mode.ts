@@ -6,3 +6,9 @@ export interface Task {
   createdAt: Date;
   dueHour: Date;
 }
+
+export interface AddTask{
+  title: string;
+  category: string;
+  dueHour: Date;
+}

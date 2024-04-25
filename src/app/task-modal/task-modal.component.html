@@ -1,32 +1,40 @@
-<!-- Modal Button -->
-<button type="button" class="btn btn-primary" (click)="openModal()">
-  Open Modal
-</button>
-
-<!-- Modal Element -->
-<div
-  class="modal fade"
-  #myModal
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalTitle"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalTitle">My Modal</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-          (click)="closeModal()"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+<!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{modalTitle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="choresForm" action="">
+            <div class="mb-3">
+              <label for="title" class="form-label">Título</label>
+              <input type="text" class="form-control" id="title" formControlName="title">
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Categoria</label>
+              <input type="text" class="form-control" id="category" formControlName="category">
+            </div>
+            <div class="mb-3">
+              <label for="dueHour" class="form-label">Hora</label>
+              <input type="time" class="form-control" id="dueHour" formControlName="dueHour">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addChore()">Add</button>
+        </div>
       </div>
-      <div class="modal-body">Modal content goes here...</div>
     </div>
   </div>
-</div>
+
