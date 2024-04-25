@@ -8,4 +8,5 @@ import { Task } from '../models/tasks.mode';
 })
 export class TaskComponent {
   @Input() task?: Task;
+
 }
