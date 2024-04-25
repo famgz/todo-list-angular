@@ -22,10 +22,10 @@ button {
   margin: auto 0;
   padding: 0.5rem 0.75rem;
   line-height: 1;
-  transition: border 0.3s;
+  transition: box-shadow 0.5s;
   border-radius: 4px;
 
   &:hover {
-    box-shadow: inset 0px 0px 5px 5px var(--primary);
+    box-shadow: inset 0px 0px 4px 4px var(--primary);
   }
 }

@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { TaskComponent } from './task/task.component';
+import { TaskModalComponent } from './task-modal/task-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TaskComponent],
+  declarations: [AppComponent, HeaderComponent, TaskComponent, TaskModalComponent],
   imports: [BrowserModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

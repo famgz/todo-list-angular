@@ -1,0 +1,32 @@
+<!-- Modal Button -->
+<button type="button" class="btn btn-primary" (click)="openModal()">
+  Open Modal
+</button>
+
+<!-- Modal Element -->
+<div
+  class="modal fade"
+  #myModal
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalTitle">My Modal</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Modal content goes here...</div>
+    </div>
+  </div>
+</div>
