@@ -28,6 +28,6 @@ export class HeaderComponent {
   ngOnInit() {
     setInterval(() => {
       this.today = new Date();
-    }, 1000);
+    }, 60000); // 1 min interval
   }
 }
