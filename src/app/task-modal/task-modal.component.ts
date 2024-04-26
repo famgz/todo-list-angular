@@ -1,4 +1,13 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AddTask, Task } from '../models/tasks.mode';
 declare var $: any;
 
 @Component({
@@ -7,13 +16,19 @@ declare var $: any;
   styleUrls: ['./task-modal.component.css'],
 })
 export class TaskModalComponent {
-  @ViewChild('myModal') myModal!: ElementRef;
+  @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
 
-  openModal() {
-    $(this.myModal.nativeElement).modal('show');
-  }
+  modalTitle: string = 'Nova Tarefa';
 
-  closeModal() {
-    $(this.myModal.nativeElement).modal('hide');
+  choresForm = new FormGroup({
+    title: new FormControl(),
+    category: new FormControl(),
+    dueHour: new FormControl(),
+  });
+
+  addChore(): void {
+    this.choreEmitter.emit(this.choresForm);
+    const chores = this.choresForm.getRawValue();
+    console.log(chores);
   }
 }

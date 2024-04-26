@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../models/tasks.mode';
 
 @Component({
@@ -8,4 +8,5 @@ import { Task } from '../models/tasks.mode';
 })
 export class TaskComponent {
   @Input() task?: Task;
+
 }
