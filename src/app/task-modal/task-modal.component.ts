@@ -7,7 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AddTask, Task } from '../models/tasks.mode';
+import { AddTask, Task } from '../models/tasks.model';
 declare var $: any;
 
 @Component({
