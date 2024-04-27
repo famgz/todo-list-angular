@@ -9,7 +9,7 @@ import { Observable, first, map, of } from 'rxjs';
 export class TaskService {
 
 
-  key = "5391953d971d4492a293a71a90c6fbb6";
+  key = "87370568a98f417fa45a838897a2a41e";
   apiUrl = `https://crudcrud.com/api/${this.key}/tasks`;
 
   private tasks: Task[] = [];
