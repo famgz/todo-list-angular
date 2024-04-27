@@ -1,64 +1,140 @@
 <!-- Modal 1 -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel1"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel1">Nova Tarefa</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 1 -->
         <form [formGroup]="choresForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Título</label>
-            <input type="text" class="form-control" id="title" formControlName="title">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              formControlName="title"
+            />
           </div>
           <div class="mb-3">
             <label for="category" class="form-label">Categoria</label>
-            <input type="text" class="form-control" id="category" formControlName="category">
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              formControlName="category"
+            />
           </div>
           <div class="mb-3">
             <label for="dueHour" class="form-label">Hora</label>
-            <input type="time" class="form-control" id="dueHour" formControlName="dueHour">
+            <input
+              type="time"
+              class="form-control"
+              id="dueHour"
+              formControlName="dueHour"
+            />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addChore()">Add</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addChore()"
+          data-bs-dismiss="modal"
+        >
+          Add
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal 2 -->
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+<div
+  class="modal fade"
+  id="staticBackdrop1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel2"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel2">Editar Tarefa</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel2">
+          Editar Tarefa
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 2 -->
         <form [formGroup]="choresForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Novo Título</label>
-            <input type="text" class="form-control" id="title" formControlName="title">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              formControlName="title"
+            />
           </div>
           <div class="mb-3">
             <label for="category" class="form-label">Nova Categoria</label>
-            <input type="text" class="form-control" id="category" formControlName="category">
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              formControlName="category"
+            />
           </div>
           <div class="mb-3">
             <label for="dueHour" class="form-label">Novo Horário</label>
-            <input type="time" class="form-control" id="dueHour" formControlName="dueHour">
+            <input
+              type="time"
+              class="form-control"
+              id="dueHour"
+              formControlName="dueHour"
+            />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Change</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="editChore()"
+        >
+          Change
+        </button>
       </div>
     </div>
   </div>

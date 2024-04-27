@@ -17,6 +17,8 @@ declare var $: any;
 })
 export class TaskModalComponent {
   @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() editEmitter: EventEmitter<any> = new EventEmitter();
+
 
   modalTitle: string = 'Nova Tarefa';
 
@@ -28,7 +30,11 @@ export class TaskModalComponent {
 
   addChore(): void {
     this.choreEmitter.emit(this.choresForm);
-    const chores = this.choresForm.getRawValue();
-    console.log(chores);
   }
+
+  editChore():void{
+    this.editEmitter.emit(this.choresForm);
+
+  }
+
 }
