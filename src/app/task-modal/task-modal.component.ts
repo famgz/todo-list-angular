@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddTask, Task } from '../models/tasks.model';
 declare var $: any;
 
@@ -23,9 +23,9 @@ export class TaskModalComponent {
   modalTitle: string = 'Nova Tarefa';
 
   choresForm = new FormGroup({
-    title: new FormControl(),
-    category: new FormControl(),
-    dueHour: new FormControl(),
+    title: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(30)]),
+    category: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(30)]),
+    dueHour: new FormControl("",[Validators.required]),
   });
 
   addChore(): void {

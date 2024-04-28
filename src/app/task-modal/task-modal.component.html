@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 1 -->
-        <form [formGroup]="choresForm" action="">
+        <form [formGroup]="choresForm" (ngSubmit)="addChore()">
           <div class="mb-3">
             <label for="title" class="form-label">Título</label>
             <input
@@ -56,10 +56,10 @@
           Close
         </button>
         <button
-          type="button"
+          type="submit"
           class="btn btn-primary"
-          (click)="addChore()"
           data-bs-dismiss="modal"
+          [disabled]="choresForm.invalid"
         >
           Add
         </button>
