@@ -67,6 +67,7 @@
     </div>
   </div>
 </div>
+<!-- Fim conteúdo modal -->
 
 <!-- Modal 2 -->
 <div
@@ -93,7 +94,7 @@
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 2 -->
-        <form [formGroup]="choresForm" action="">
+        <form [formGroup]="choresForm" (ngSubmit)="editChore()">
           <div class="mb-3">
             <label for="title" class="form-label">Novo Título</label>
             <input
@@ -128,10 +129,11 @@
           Close
         </button>
         <button
-          type="button"
+          type="submit"
           class="btn btn-primary"
           data-bs-dismiss="modal"
-          (click)="editChore()"
+          [disabled]="choresForm.invalid"
+          
         >
           Change
         </button>
