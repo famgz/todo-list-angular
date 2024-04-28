@@ -19,7 +19,6 @@ export class TaskModalComponent {
   @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
   @Output() editEmitter: EventEmitter<any> = new EventEmitter();
 
-
   modalTitle: string = 'Nova Tarefa';
 
   choresForm = new FormGroup({
@@ -28,13 +27,11 @@ export class TaskModalComponent {
     dueHour: new FormControl(),
   });
 
-  addChore(): void {
+  addTarefa(): void {
     this.choreEmitter.emit(this.choresForm);
   }
 
-  editChore():void{
+  editChore(): void {
     this.editEmitter.emit(this.choresForm);
-
   }
-
 }

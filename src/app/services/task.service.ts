@@ -4,77 +4,33 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, first, map, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
-
-
-  key = "5391953d971d4492a293a71a90c6fbb6";
-  apiUrl = `https://crudcrud.com/api/${this.key}/tasks`;
+  apikey = 'af0cf0953aea40abb046609ae3e6cbed';
+  apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
 
   private tasks: Task[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   listTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(`${this.apiUrl}`)
-      .pipe(
-        map(data => {
-          this.tasks = data;
-          return this.tasks;
-        })
-      );
+    return this.http.get<Task[]>(`${this.apiUrl}`);
   }
 
-  getTask(id: string): Task | undefined {
-
-    let task;
-    this.http
-      .get<Task>(`${this.apiUrl}/${id}`)
-      .pipe(first())
-      .subscribe({
-        next: (response: Task) => {
-          console.log(`Pesquisa por id ${response}`);
-          task = response;
-        },
-        error: (err) => {
-          console.error(err);
-        },
-      });
-
-      return task ;
-
+  getTask(id: string): Observable<Task> {
+    return this.http.get<Task>(`${this.apiUrl}/${id}`);
   }
 
   addTask(newTask: Task) {
-    return this.http
-      .post<Task>(`${this.apiUrl}`, newTask)
-   
+    return this.http.post<Task>(`${this.apiUrl}`, newTask);
   }
 
   updateTask(newTask: Task) {
-    this.http
-      .put<Task>(`${this.apiUrl}/${newTask.id}`, newTask)
-      .pipe(first())
-      .subscribe({
-        next: (response: Task) => {
-          console.log(response);
-        },
-        error: (err) => {
-          console.error(err);
-        },
-      });
+    return this.http.put<Task>(`${this.apiUrl}/${newTask.id}`, newTask);
   }
 
   deleteTask(id: string) {
-    console.log(`${this.apiUrl}/${id}`);
-    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
-      next: () => {
-        this.listTasks(); 
-      },
-      error: (err) => {
-        console.error('Error:', err);
-      }
-    });
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

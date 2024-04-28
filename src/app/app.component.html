@@ -6,14 +6,11 @@
   </ng-container>
   <ng-container class="row" *ngIf="tasks.length > 0">
     <ng-container *ngFor="let task of tasks">
-      <app-task 
-        [task]="task"
-        (choreEmitter)="chore($event)"></app-task>
+      <app-task [task]="task" (choreEmitter)="addTarefa($event)"></app-task>
     </ng-container>
   </ng-container>
 
-  <app-task-modal (choreEmitter)="chore($event)"></app-task-modal>
+  <app-task-modal (choreEmitter)="addTarefa($event)"></app-task-modal>
 </main>
-
 
 <span class="navbar-toggler-icon"></span>
