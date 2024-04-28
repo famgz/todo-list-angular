@@ -33,27 +33,14 @@ export class AppComponent implements OnInit {
   //Chore para Adicionar
   chore(event: any): void {
     this.receivedChore = event;
-    this.taskService.addTask({
-      id: AppComponent.nextId++,
-      title: this.receivedChore.value.title,
-      category: this.receivedChore.value.category,
-      completed: false,
-      createdAt: new Date(),
-      dueHour: this.receivedChore.value.dueHour,
-    }).pipe(first())
-    .subscribe({
-      next: (response: Task) => {
-       this.taskService.listTasks().subscribe //Chamar get
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    });;
+    console.log(event)
+    };;
   }
 
-  handleEditChore(event: any): void {
-    this.receivedChore = event;
-  }
+
+  // handleEditChore(event: any): void {
+  //   this.receivedChore = event;
+  // }
 
   //Chore para Pesquisar por id
   //taskService.getTask(item.id.toString())
@@ -63,4 +50,4 @@ export class AppComponent implements OnInit {
 
   //Chore para Atualizar
   //taskService.updateTask(task)
-}
+
