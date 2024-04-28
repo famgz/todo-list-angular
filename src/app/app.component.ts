@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
 
   id(id:string): void {
     this.nextId = id
-    // console.log(this.nextId)
+    console.log(this.nextId)
   }
 
 
