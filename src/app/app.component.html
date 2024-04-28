@@ -6,11 +6,22 @@
   </ng-container>
   <ng-container class="row" *ngIf="tasks.length > 0">
     <ng-container *ngFor="let task of tasks">
-      <app-task [task]="task" (choreEmitter)="addTarefa($event)"></app-task>
+      <app-task
+        [task]="task"
+        [nextId] = "task._id"
+        (choreEmitter)="addTarefa($event)"
+        (editEmitter)="editTarefa($event,nextId)"
+        (deleteEmitter)="deletarTarefa($event,nextId)"
+      ></app-task>
+      <button (click)="id(task._id)">AAAAA</button>
     </ng-container>
   </ng-container>
 
-  <app-task-modal (choreEmitter)="addTarefa($event)"></app-task-modal>
+  <app-task-modal
+    (choreEmitter)="addTarefa($event)"
+    (editEmitter)="editTarefa($event,$event._id)"
+    (deleteEmitter)="deletarTarefa($event,$event._id)"
+  ></app-task-modal>
 </main>
 
 <span class="navbar-toggler-icon"></span>

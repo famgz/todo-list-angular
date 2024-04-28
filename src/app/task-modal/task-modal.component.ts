@@ -7,7 +7,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AddTask, Task } from '../models/tasks.model';
+import { CreateTask, Task } from '../models/tasks.model';
+import { TaskService } from '../services/task.service';
 declare var $: any;
 
 @Component({
@@ -18,7 +19,14 @@ declare var $: any;
 export class TaskModalComponent {
   @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
   @Output() editEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() deleteEmitter: EventEmitter<any> = new EventEmitter();
 
+  // taskService: TaskService;
+
+  // constructor(taskService: TaskService) {
+  //   this.taskService = taskService;
+  // }
+  
   modalTitle: string = 'Nova Tarefa';
 
   choresForm = new FormGroup({
@@ -31,7 +39,15 @@ export class TaskModalComponent {
     this.choreEmitter.emit(this.choresForm);
   }
 
-  editChore(): void {
+  editTarefa(): void {
     this.editEmitter.emit(this.choresForm);
+    console.log("foi")
   }
+
+  deletarTarefa():void{
+   
+  }
+
 }
+
+

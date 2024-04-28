@@ -1,5 +1,5 @@
 export interface Task {
-  id: number;
+  _id?: string;
   title: string;
   category: string;
   completed: boolean;
@@ -7,8 +7,9 @@ export interface Task {
   dueHour: Date;
 }
 
-export interface AddTask{
+export interface CreateTask{
   title: string;
   category: string;
   dueHour: Date;
+  completed: boolean;
 }
