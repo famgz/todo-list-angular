@@ -11,9 +11,11 @@ import { filter, first } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'todo-list-angular';
   receivedChore: any;
-  nextId = "";
+  nextId = '';
   tasks: Task[] = [];
   taskService: TaskService;
+
+  currentTask: Task | undefined;
 
   ngOnInit(): void {
     this.listarTarefa();
@@ -46,8 +48,7 @@ export class AppComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (response: any) => {
-          this.taskService.listTasks().subscribe;
-          this.nextId = response._id
+          this.listarTarefa();
         },
         error: (err) => {
           console.error(err);
@@ -55,10 +56,9 @@ export class AppComponent implements OnInit {
       });
   }
 
-  editTarefa(event: Task,id:string): void {
-    console.log(id,"quero aqui")
+  editTarefa(event: any, id: string): void {
     this.receivedChore = event;
-    console.log(event);
+    console.log({ event });
     this.taskService
       .updateTask({
         _id: id,
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (response: Task) => {
-          this.taskService.listTasks().subscribe;
+          this.listarTarefa();
         },
         error: (err) => {
           console.error(err);
@@ -79,22 +79,32 @@ export class AppComponent implements OnInit {
       });
   }
 
-  deletarTarefa(event: any,id:string): void {
-    this.taskService.deleteTask(id)
+  deletarTarefa(event: any, id: string): void {
+    this.taskService.deleteTask(id).subscribe({
+      next: (response) => console.log(response),
+      complete: () => {
+        this.listarTarefa();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
-  id(id:string): void {
-    this.nextId = id
-    console.log(this.nextId)
+  id(id: string): void {
+    this.nextId = id;
+    console.log(this.nextId);
   }
-
 
   listarTarefa() {
-    this.taskService.listTasks().pipe().subscribe((tasks) => {
-      this.tasks = tasks;
-      console.log(
-        `\nTarefas encontradas na API: ${JSON.stringify(this.tasks)}\n`
-      );
-    });
+    this.taskService
+      .listTasks()
+      .pipe()
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+        console.log(
+          `\nTarefas encontradas na API: ${JSON.stringify(this.tasks)}\n`
+        );
+      });
   }
 }

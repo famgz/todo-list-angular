@@ -4,24 +4,27 @@
   <ng-container class="row" *ngIf="tasks.length === 0">
     <app-task [task]=""></app-task>
   </ng-container>
-  <ng-container class="row" *ngIf="tasks.length > 0">
+  <ng-container class="row">
     <ng-container *ngFor="let task of tasks">
-      <app-task
+      <app-task [task]="task"></app-task>
+
+      <app-task-modal
         [task]="task"
-        [nextId] = "task._id"
         (choreEmitter)="addTarefa($event)"
-        (editEmitter)="editTarefa($event,nextId)"
-        (deleteEmitter)="deletarTarefa($event,nextId)"
-      ></app-task>
-      <button (click)="id(task._id)">Printa ID no console</button>
+        (editEmitter)="editTarefa($event, task._id)"
+        (deleteEmitter)="deletarTarefa($event, task._id)"
+        id="{{ task._id }}"
+      ></app-task-modal>
     </ng-container>
   </ng-container>
-
-  <app-task-modal
-    (choreEmitter)="addTarefa($event)"
-    (editEmitter)="editTarefa($event,$event._id)"
-    (deleteEmitter)="deletarTarefa($event,$event._id)"
-  ></app-task-modal>
+  <app-task-modal (choreEmitter)="addTarefa($event)"></app-task-modal>
 </main>
 
 <span class="navbar-toggler-icon"></span>
+
+<!--       <app-task
+        [task]="task"
+        (choreEmitter)="addTarefa($event)"
+        (editEmitter)="editTarefa($event, task._id)"
+        (deleteEmitter)="deletarTarefa($event, task._id)"
+      ></app-task> -->

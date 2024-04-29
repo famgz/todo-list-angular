@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CreateTask, Task } from '../models/tasks.model';
@@ -16,17 +17,13 @@ declare var $: any;
   templateUrl: './task-modal.component.html',
   styleUrls: ['./task-modal.component.css'],
 })
-export class TaskModalComponent {
+export class TaskModalComponent implements OnInit {
   @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
   @Output() editEmitter: EventEmitter<any> = new EventEmitter();
   @Output() deleteEmitter: EventEmitter<any> = new EventEmitter();
 
-  // taskService: TaskService;
+  @Input() task?: Task;
 
-  // constructor(taskService: TaskService) {
-  //   this.taskService = taskService;
-  // }
-  
   modalTitle: string = 'Nova Tarefa';
 
   choresForm = new FormGroup({
@@ -35,19 +32,22 @@ export class TaskModalComponent {
     dueHour: new FormControl(),
   });
 
+  ngOnInit(): void {
+    if (this.task) {
+      this.choresForm.patchValue(this.task);
+    }
+  }
+
   addTarefa(): void {
     this.choreEmitter.emit(this.choresForm);
   }
 
-  editTarefa(): void {
+  handleEditTarefa(): void {
+    // this.choresForm.patchValue(task)
     this.editEmitter.emit(this.choresForm);
-    console.log("foi")
   }
 
-  deletarTarefa():void{
-   
+  deletarTarefa(): void {
+    this.deleteEmitter.emit();
   }
-
 }
-
-

@@ -7,10 +7,8 @@ import { Observable, first, map, of } from 'rxjs';
   providedIn: 'root',
 })
 export class TaskService {
-  apikey = '3d7cc799862f4940940552667a0d6b63';
+  apikey = '2b21c87f7eee421ea947f160e01a21c4';
   apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
-
-  private tasks: Task[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -27,18 +25,12 @@ export class TaskService {
   }
 
   updateTask(newTask: Task) {
-    console.log(`${this.apiUrl}/${newTask._id}`)
-    return this.http.put<Task>(`${this.apiUrl}/${newTask._id}`, newTask);
+    const taskId = newTask._id;
+    delete newTask._id;
+    return this.http.put<Task>(`${this.apiUrl}/${taskId}`, newTask);
   }
 
   deleteTask(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`).pipe(first()).subscribe({
-      complete:() => {
-        this.listTasks()
-      },
-      error:(err) => {
-       console.log(err)
-      },
-    });
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
