@@ -71,7 +71,7 @@
 <!-- Modal 2: EDIT -->
 <div
   class="modal fade"
-  id="staticBackdrop1"
+  id="{{ task?._id ? task?._id + '_edit' : '' }}"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -143,7 +143,7 @@
 <!-- Modal 3 : DELETE -->
 <div
   class="modal fade"
-  id="staticBackdrop2"
+  id="{{ task?._id ? task?._id + '_delete' : '' }}"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"

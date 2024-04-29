@@ -7,7 +7,7 @@ import { Observable, first, map, of } from 'rxjs';
   providedIn: 'root',
 })
 export class TaskService {
-  apikey = '2b21c87f7eee421ea947f160e01a21c4';
+  apikey = '472dbd3a61b349bcb9729381c7b69cb0';
   apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
 
   constructor(private http: HttpClient) {}

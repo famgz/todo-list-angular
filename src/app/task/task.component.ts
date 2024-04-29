@@ -6,8 +6,14 @@ import { Task } from '../models/tasks.model';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css'],
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   @Input() task?: Task;
 
-  taskId = this.task ? this.task._id : undefined;
+  public taskId = 'asd';
+
+  ngOnInit(): void {
+    if (this.task) {
+      this.taskId = '#' + this.task._id || '';
+    }
+  }
 }
