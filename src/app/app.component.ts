@@ -1,7 +1,7 @@
-import { CreateTask, Task } from './models/tasks.model';
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs';
+import { CreateTask, Task } from './models/tasks.model';
 import { TaskService } from './services/task.service';
-import { filter, first } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
   nextId = '';
   tasks: Task[] = [];
   taskService: TaskService;
-
-  currentTask: Task | undefined;
 
   ngOnInit(): void {
     this.listarTarefa();
@@ -75,6 +73,9 @@ export class AppComponent implements OnInit {
         },
         error: (err) => {
           console.error(err);
+        },
+        complete: () => {
+          this.receivedChore.reset();
         },
       });
   }

@@ -1,15 +1,6 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CreateTask, Task } from '../models/tasks.model';
-import { TaskService } from '../services/task.service';
+import { Task } from '../models/tasks.model';
 declare var $: any;
 
 @Component({
@@ -40,6 +31,7 @@ export class TaskModalComponent implements OnInit {
 
   addTarefa(): void {
     this.choreEmitter.emit(this.choresForm);
+    this.choresForm.reset();
   }
 
   handleEditTarefa(): void {

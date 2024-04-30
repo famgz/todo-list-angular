@@ -1,13 +1,13 @@
-import { CreateTask, Task } from '../models/tasks.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, first, map, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { CreateTask, Task } from '../models/tasks.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  apikey = '472dbd3a61b349bcb9729381c7b69cb0';
+  apikey = '8da05b6106d34e7086858d35b0a8272e';
   apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
 
   constructor(private http: HttpClient) {}
