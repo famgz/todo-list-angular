@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Task } from '../models/tasks.model';
 
 declare var $: any;
@@ -19,9 +19,17 @@ export class TaskModalComponent implements OnInit {
   modalTitle: string = 'Nova Tarefa';
 
   choresForm = new FormGroup({
-    title: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(30)]),
-    category: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(30)]),
-    dueHour: new FormControl("",[Validators.required]),
+    title: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(30),
+    ]),
+    category: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(30),
+    ]),
+    dueHour: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
