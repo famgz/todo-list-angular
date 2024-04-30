@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getFormattedDate, getFormattedHour } from '../shared/utils';
 
 @Component({
   selector: 'app-header',
@@ -8,21 +9,8 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   today = new Date();
 
-  getFormattedDate(): string {
-    const formattedDate = this.today.toLocaleString('pt-br', {
-      weekday: 'long',
-      day: '2-digit',
-      month: 'long',
-    });
-    return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-  }
-
-  getFormattedHour(): string {
-    return this.today.toLocaleString('pt-br', {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  }
+  formattedHour = getFormattedHour(this.today);
+  formattedDate = getFormattedDate(this.today);
 
   ngOnInit() {
     setInterval(() => {
