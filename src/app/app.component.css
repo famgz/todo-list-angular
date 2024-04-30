@@ -3,10 +3,10 @@
   flex-direction: column;
   gap: 1.5rem;
   width: min(500px, 100%);
-  height: auto;
+  height: min(1024px, 100vh);
   margin: 0 auto;
   padding: 1.5rem;
-  background: rgb(2,0,36);
-  background: linear-gradient(214deg, rgba(2,0,36,1) 0%, rgba(9,121,97,1) 28%, rgba(0,212,255,1) 100%);  
-  background-repeat: repeat;
+  background-image: url("/assets/images/background-tech.jpg");
+  background-position: center;
+  background-size: cover;
 }
