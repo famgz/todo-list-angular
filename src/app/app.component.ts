@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
         title: this.receivedChore.value.title,
         category: this.receivedChore.value.category,
         completed: false,
-        createdAt: new Date(),
+        // createdAt: new Date(),
         dueHour: this.receivedChore.value.dueHour,
       })
       .pipe(first())

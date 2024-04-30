@@ -3,13 +3,13 @@ export interface Task {
   title: string;
   category: string;
   completed: boolean;
-  createdAt: Date;
-  dueHour: Date;
+  // createdAt: Date;
+  dueHour: string;
 }
 
-export interface CreateTask{
+export interface CreateTask {
   title: string;
   category: string;
-  dueHour: Date;
+  dueHour: string;
   completed: boolean;
 }

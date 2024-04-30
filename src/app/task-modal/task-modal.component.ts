@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Task } from '../models/tasks.model';
 declare var $: any;
 
@@ -20,7 +20,10 @@ export class TaskModalComponent implements OnInit {
   choresForm = new FormGroup({
     title: new FormControl(),
     category: new FormControl(),
-    dueHour: new FormControl(),
+    dueHour: new FormControl(
+      '00:00',
+      Validators.pattern(/^([01]\d|2[0-3]):([0-5]\d)$/)
+    ),
   });
 
   ngOnInit(): void {
@@ -35,7 +38,6 @@ export class TaskModalComponent implements OnInit {
   }
 
   handleEditTarefa(): void {
-    // this.choresForm.patchValue(task)
     this.editEmitter.emit(this.choresForm);
   }
 
