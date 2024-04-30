@@ -1,5 +1,8 @@
 # TodoListAngular
 
+![screenshot](https://raw.githubusercontent.com/famgz/famgz/main/presentations/todo-list-angular/0.jpg)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
 ## Development server
