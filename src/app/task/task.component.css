@@ -13,6 +13,13 @@
   > span {
   }
 
+  & h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.75rem;
+  }
+
   i {
     font-size: 2rem;
   }
@@ -30,12 +37,18 @@
     text-align: center;
     align-items: start;
     flex: 1 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     & > div {
       display: flex;
       gap: 0.5rem;
       align-items: center;
       text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .separator {

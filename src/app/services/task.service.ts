@@ -7,8 +7,10 @@ import { CreateTask, Task } from '../models/tasks.model';
   providedIn: 'root',
 })
 export class TaskService {
-  apikey = '8da05b6106d34e7086858d35b0a8272e';
-  apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
+  // apikey = '995bd881c11b4f74ba6bced6001bf7f7';
+  // apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
+  // apiUrl = 'http://localhost:5000/tasks';
+  apiUrl = 'https://famgz-tasks-api.vercel.app/tasks';
 
   constructor(private http: HttpClient) {}
 

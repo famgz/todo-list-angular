@@ -13,8 +13,6 @@
     <div class="task-info">
       <h2>{{ task.title }}</h2>
       <div>
-        <span>{{ task.category }}</span>
-        <i class="fa-solid fa-circle separator"></i>
         <i class="fa-regular fa-clock"></i>
         <span>
           {{
@@ -24,6 +22,8 @@
             })
           }}
         </span>
+        <i class="fa-solid fa-circle separator"></i>
+        <span>{{ task.category }}</span>
       </div>
     </div>
     <div class="task-btns">
