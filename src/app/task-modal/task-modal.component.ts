@@ -1,13 +1,7 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddTask, Task } from '../models/tasks.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Task } from '../models/tasks.model';
+
 declare var $: any;
 
 @Component({
@@ -15,10 +9,12 @@ declare var $: any;
   templateUrl: './task-modal.component.html',
   styleUrls: ['./task-modal.component.css'],
 })
-export class TaskModalComponent {
+export class TaskModalComponent implements OnInit {
   @Output() choreEmitter: EventEmitter<any> = new EventEmitter();
   @Output() editEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() deleteEmitter: EventEmitter<any> = new EventEmitter();
 
+  @Input() task?: Task;
 
   modalTitle: string = 'Nova Tarefa';
 
@@ -28,13 +24,23 @@ export class TaskModalComponent {
     dueHour: new FormControl("",[Validators.required]),
   });
 
-  addChore(): void {
+  ngOnInit(): void {
+    if (this.task) {
+      this.choresForm.patchValue(this.task);
+    }
+  }
+
+  addTarefa(): void {
     this.choreEmitter.emit(this.choresForm);
+    this.choresForm.reset();
   }
 
-  editChore():void{
+  handleEditTarefa(): void {
+    // this.choresForm.patchValue(task)
     this.editEmitter.emit(this.choresForm);
-
   }
 
+  deletarTarefa(): void {
+    this.deleteEmitter.emit();
+  }
 }
