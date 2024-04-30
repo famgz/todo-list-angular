@@ -1,4 +1,4 @@
-<!-- Modal 1 -->
+<!-- Modal 1: ADD -->
 <div
   class="modal fade"
   id="staticBackdrop"
@@ -12,16 +12,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel1">Nova Tarefa</h1>
-        <!-- <button
+        <button
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
-        ></button> -->
+        ></button>
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 1 -->
-        <form [formGroup]="choresForm" (ngSubmit)="addChore()">
+        <form [formGroup]="choresForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Título</label>
             <input
@@ -56,10 +56,10 @@
           Close
         </button>
         <button
-          type="submit"
+          type="button"
           class="btn btn-primary"
+          (click)="addTarefa()"
           data-bs-dismiss="modal"
-          [disabled]="choresForm.invalid"
         >
           Add
         </button>
@@ -67,12 +67,11 @@
     </div>
   </div>
 </div>
-<!-- Fim conteúdo modal -->
 
-<!-- Modal 2 -->
+<!-- Modal 2: EDIT -->
 <div
   class="modal fade"
-  id="staticBackdrop1"
+  id="{{ task?._id ? task?._id + '_edit' : '' }}"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -94,7 +93,7 @@
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 2 -->
-        <form [formGroup]="choresForm" (ngSubmit)="editChore()">
+        <form [formGroup]="choresForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Novo Título</label>
             <input
@@ -129,13 +128,46 @@
           Close
         </button>
         <button
-          type="submit"
+          type="button"
           class="btn btn-primary"
           data-bs-dismiss="modal"
-          [disabled]="choresForm.invalid"
-          
+          (click)="handleEditTarefa()"
         >
           Change
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 : DELETE -->
+<div
+  class="modal fade"
+  id="{{ task?._id ? task?._id + '_delete' : '' }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel2"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel2">
+          Deletar Tarefa
+        </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deletarTarefa()"
+          data-bs-dismiss="modal"
+        >
+          Deletar
         </button>
       </div>
     </div>

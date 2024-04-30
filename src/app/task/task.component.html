@@ -30,11 +30,15 @@
       <button
         class="task-btn-edit"
         data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop1"
+        [attr.data-bs-target]="taskId + '_edit'"
       >
         <i class="fa-solid fa-pen"></i>
       </button>
-      <button class="task-btn-delete">
+      <button
+        class="task-btn-delete"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="taskId + '_delete'"
+      >
         <i class="fa-solid fa-trash"></i>
       </button>
     </div>

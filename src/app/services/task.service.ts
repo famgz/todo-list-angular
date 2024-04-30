@@ -1,80 +1,36 @@
-import { Task } from '../models/tasks.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, first, map, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { CreateTask, Task } from '../models/tasks.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
+  apikey = '8da05b6106d34e7086858d35b0a8272e';
+  apiUrl = `https://crudcrud.com/api/${this.apikey}/tasks`;
 
-
-  key = "87370568a98f417fa45a838897a2a41e";
-  apiUrl = `https://crudcrud.com/api/${this.key}/tasks`;
-
-  private tasks: Task[] = [];
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   listTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(`${this.apiUrl}`)
-      .pipe(
-        map(data => {
-          this.tasks = data;
-          return this.tasks;
-        })
-      );
+    return this.http.get<Task[]>(`${this.apiUrl}`);
   }
 
-  getTask(id: string): Task | undefined {
-
-    let task;
-    this.http
-      .get<Task>(`${this.apiUrl}/${id}`)
-      .pipe(first())
-      .subscribe({
-        next: (response: Task) => {
-          console.log(`Pesquisa por id ${response}`);
-          task = response;
-        },
-        error: (err) => {
-          console.error(err);
-        },
-      });
-
-      return task ;
-
+  getTask(id: string): Observable<Task> {
+    return this.http.get<Task>(`${this.apiUrl}/${id}`);
   }
 
-  addTask(newTask: Task) {
-    return this.http
-      .post<Task>(`${this.apiUrl}`, newTask)
-   
+  addTask(newTask: CreateTask) {
+    return this.http.post<Task>(`${this.apiUrl}`, newTask);
   }
 
   updateTask(newTask: Task) {
-    this.http
-      .put<Task>(`${this.apiUrl}/${newTask.id}`, newTask)
-      .pipe(first())
-      .subscribe({
-        next: (response: Task) => {
-          console.log(response);
-        },
-        error: (err) => {
-          console.error(err);
-        },
-      });
+    const taskId = newTask._id;
+    delete newTask._id;
+    return this.http.put<Task>(`${this.apiUrl}/${taskId}`, newTask);
   }
 
   deleteTask(id: string) {
-    console.log(`${this.apiUrl}/${id}`);
-    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
-      next: () => {
-        this.listTasks(); 
-      },
-      error: (err) => {
-        console.error('Error:', err);
-      }
-    });
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
