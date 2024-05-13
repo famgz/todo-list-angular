@@ -17,7 +17,7 @@ export class TaskModalComponent implements OnInit {
 
   modalTitle: string = 'Nova Tarefa';
 
-  choresForm = new FormGroup({
+  taskForm = new FormGroup({
     title: new FormControl(),
     category: new FormControl(),
     dueHour: new FormControl(
@@ -28,17 +28,17 @@ export class TaskModalComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.task) {
-      this.choresForm.patchValue(this.task);
+      this.taskForm.patchValue(this.task);
     }
   }
 
   addTarefa(): void {
-    this.choreEmitter.emit(this.choresForm);
-    this.choresForm.reset();
+    this.choreEmitter.emit(this.taskForm);
+    this.taskForm.reset();
   }
 
   handleEditTarefa(): void {
-    this.editEmitter.emit(this.choresForm);
+    this.editEmitter.emit(this.taskForm);
   }
 
   deletarTarefa(): void {

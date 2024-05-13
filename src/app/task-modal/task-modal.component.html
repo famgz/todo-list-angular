@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 1 -->
-        <form [formGroup]="choresForm" action="">
+        <form [formGroup]="taskForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Título</label>
             <input
@@ -60,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          Cancelar
         </button>
         <button
           type="button"
@@ -68,7 +68,7 @@
           (click)="addTarefa()"
           data-bs-dismiss="modal"
         >
-          Add
+          Salvar
         </button>
       </div>
     </div>
@@ -100,7 +100,7 @@
       </div>
       <div class="modal-body">
         <!-- Conteúdo do modal 2 -->
-        <form [formGroup]="choresForm" action="">
+        <form [formGroup]="taskForm" action="">
           <div class="mb-3">
             <label for="title" class="form-label">Novo Título</label>
             <input
@@ -139,7 +139,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          Cancelar
         </button>
         <button
           type="button"
@@ -147,7 +147,7 @@
           data-bs-dismiss="modal"
           (click)="handleEditTarefa()"
         >
-          Change
+          Editar
         </button>
       </div>
     </div>
@@ -168,12 +168,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel2">
-          Deletar Tarefa
+          Deletar Tarefa "{{ task?.title }}"?
         </h1>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          Cancelar
         </button>
         <button
           type="button"
