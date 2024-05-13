@@ -26,10 +26,9 @@ export class TaskService {
     return this.http.post<Task>(`${this.apiUrl}`, newTask);
   }
 
-  updateTask(newTask: Task) {
-    const taskId = newTask._id;
-    delete newTask._id;
-    return this.http.put<Task>(`${this.apiUrl}/${taskId}`, newTask);
+  updateTask(id: string, newTask: Task) {
+    const { _id, ...rest } = newTask;
+    return this.http.put<Task>(`${this.apiUrl}/${id}`, rest);
   }
 
   deleteTask(id: string) {

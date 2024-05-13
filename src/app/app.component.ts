@@ -58,8 +58,7 @@ export class AppComponent implements OnInit {
     this.receivedChore = event;
     console.log({ event });
     this.taskService
-      .updateTask({
-        _id: id,
+      .updateTask(id, {
         title: this.receivedChore.value.title,
         category: this.receivedChore.value.category,
         completed: false,
